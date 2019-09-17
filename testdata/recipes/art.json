@@ -1,0 +1,66 @@
+[
+  {
+    "name": "figurine",
+    "base_value": 10,
+    "base_weight": 1,
+    "components": [
+      {
+        "name": "base",
+        "required": false,
+        "properties": [
+          {
+            "name": "material",
+            "required": true,
+            "attribute_names": [
+              "base metal",
+              "precious metal",
+              "ivory",
+              "bone",
+              "wood",
+              "gem",
+              "stone"
+            ]
+          },
+          {
+            "name": "shape",
+            "required": false,
+            "attribute_names": [
+              "geometric"
+            ],
+            "attribute_group_names": []
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "required": true,
+        "properties": [
+          {
+            "name": "material",
+            "required": true,
+            "attribute_names": [
+              "base metal",
+              "precious metal",
+              "ivory",
+              "bone",
+              "wood",
+              "gem",
+              "stone"
+            ],
+            "attribute_group_names": []
+          },
+          {
+            "name": "shape",
+            "required": true,
+            "attribute_names": [
+              "geometric3"
+            ],
+            "attribute_group_names": [
+              "object"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

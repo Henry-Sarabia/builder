@@ -1,0 +1,318 @@
+[
+  {
+    "name": "gemstone",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "amber",
+        "bloodstone",
+        "jet",
+        "moonstone",
+        "obsidian",
+        "onyx",
+        "sunstone",
+        "zircon"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "agate",
+        "alexandrite",
+        "amazonite",
+        "azurite",
+        "citrine",
+        "garnets",
+        "jade",
+        "lapis lazuli",
+        "malachite",
+        "opalite",
+        "pearl",
+        "peridot",
+        "quartz",
+        "rose quartz",
+        "serpentine",
+        "tiger eye",
+        "topazes",
+        "tourmaline",
+        "turquois"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "amethyst",
+        "aquamarine",
+        "diamond",
+        "emerald",
+        "ruby",
+        "sapphire"
+      ]
+    }
+  },
+  {
+    "name": "letter",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "X",
+        "Y",
+        "Z"
+      ]
+    }
+  },
+  {
+    "name": "power word",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "minor power word 1",
+        "minor power word 2",
+        "minor power word 3"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "avg power word 1",
+        "avg power word 2",
+        "avg power word 3"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "major power word 1",
+        "major power word 2",
+        "major power word 3"
+      ]
+    }
+  },
+  {
+    "name": "symbol",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "minor symbol word 1",
+        "minor symbol word 2",
+        "minor symbol word 3"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "avg symbol word 1",
+        "avg symbol word 2",
+        "avg symbol word 3"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "major symbol word 1",
+        "major symbol word 2",
+        "major symbol word 3"
+      ]
+    }
+  },
+  {
+    "name": "orcish",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "minor orcish word 1",
+        "minor orcish word 2",
+        "minor orcish word 3"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "avg orcish word 1",
+        "avg orcish word 2",
+        "avg orcish word 3"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "major orcish word 1",
+        "major orcish word 2",
+        "major orcish word 3"
+      ]
+    }
+  },
+  {
+    "name": "elvish",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "minor elvish word 1",
+        "minor elvish word 2",
+        "minor elvish word 3"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "avg elvish word 1",
+        "avg elvish word 2",
+        "avg elvish word 3"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "major elvish word 1",
+        "major elvish word 2",
+        "major elvish word 3"
+      ]
+    }
+  },
+  {
+    "name": "geometric",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "square"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "rectangle"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "circle",
+        "triangle"
+      ]
+    }
+  },
+  {
+    "name": "geometric3",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "cube"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "rectangular prism"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "sphere",
+        "pyramid"
+      ]
+    }
+  },
+  {
+    "name": "humanoid",
+    "common": {
+      "value_factor": 1.2,
+      "variants": [
+        "dragonborn",
+        "dwarf",
+        "elf",
+        "gnome",
+        "goblin",
+        "halfling",
+        "half-orc",
+        "hobgoblin",
+        "human",
+        "kenku",
+        "kobold",
+        "orc",
+        "tabaxi",
+        "tiefling",
+        "yuan-ti"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.4,
+      "variants": [
+        "aarakocra",
+        "firbolg",
+        "goliath",
+        "lizardfolk",
+        "minotaur",
+        "tortle",
+        "triton",
+        "warforged"
+      ]
+    },
+    "rare": {
+      "value_factor": 1.6,
+      "variants": [
+        "deva"
+      ]
+    }
+  },
+  {
+    "name": "monstrosity",
+    "common": {
+      "value_factor": 1.25,
+      "variants": [
+        "death dog",
+        "cockatrice",
+        "harpy",
+        "owlbear",
+        "roc",
+        "worg"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.5,
+      "variants": [
+        "bulette",
+        "centaur",
+        "chimera",
+        "drider",
+        "ettercap",
+        "hippogriff",
+        "hydra",
+        "manticore",
+        "merrow",
+        "minotaur",
+        "naga",
+        "phase spider",
+        "rust monster"
+      ]
+    },
+    "rare": {
+      "value_factor": 1.75,
+      "variants": [
+        "androsphinx",
+        "basilisk",
+        "gorgon",
+        "griffon",
+        "gynosphinx",
+        "kraken",
+        "medusa"
+      ]
+    }
+  }
+]
