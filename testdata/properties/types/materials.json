@@ -35,7 +35,7 @@
         "sandalwood"
       ]
     },
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "organic",
       "clean",
@@ -69,7 +69,7 @@
       ]
     },
     "weight_factor": 10,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "metal",
       "polish"
@@ -100,7 +100,7 @@
       ]
     },
     "weight_factor": 8,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "metal",
       "polish"
@@ -138,7 +138,7 @@
       ]
     },
     "weight_factor": 9,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "composite",
       "polish"
@@ -171,7 +171,7 @@
       ]
     },
     "weight_factor": 1,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "textile",
       "organic",
@@ -229,7 +229,7 @@
       ]
     },
     "weight_factor": 5,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "ceramic",
       "composite",
@@ -261,7 +261,7 @@
       ]
     },
     "weight_factor": 2,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "organic",
       "textile",
@@ -294,7 +294,7 @@
       ]
     },
     "weight_factor": 2,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "organic",
       "textile",
@@ -327,7 +327,7 @@
       ]
     },
     "weight_factor": 3,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "organic",
       "composite",
@@ -359,7 +359,7 @@
       ]
     },
     "weight_factor": 2,
-    "prefix_references": [
+    "prefix_names": [
       "wear",
       "organic",
       "composite",

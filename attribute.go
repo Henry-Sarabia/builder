@@ -14,7 +14,10 @@ type Attribute struct {
 	Uncommon     VariantBlock `json:"uncommon"`
 	Rare         VariantBlock `json:"rare"`
 	WeightFactor float64      `json:"weight_factor"`
-	Prefixes     []string     `json:"prefix_references"`
+	PrefixNames  []string     `json:"prefix_names"`
+	SuffixNames  []string     `json:"suffix_names"`
+	Prefixes     []*Attribute
+	Suffixes     []*Attribute
 }
 
 func (a *Attribute) Reduce() Variant {
