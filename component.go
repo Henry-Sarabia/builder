@@ -10,6 +10,7 @@ type Component struct {
 	Properties []Property `json:"properties"`
 }
 
+// Reduce returns a slice of randomly selected Properties.
 func (c *Component) Reduce() []Property {
 	var props []Property
 	for _, p := range c.Properties {
@@ -26,4 +27,25 @@ func (c *Component) Reduce() []Property {
 	}
 
 	return props
+}
+
+func (c *Component) Atomize() []Atom {
+	var atoms []Atom
+
+	props := c.Reduce()
+	for _, p := range props {
+		attr := p.Reduce()
+		for _, a := range attr {
+			v := a.Reduce()
+			atom := Atom{
+				PropertyLabel: p.Name,
+				WeightFactor: a.WeightFactor,
+				ValueFactor: v.ValueFactor,
+				String: v.Name,
+			}
+			atoms = append(atoms, atom)
+		}
+	}
+
+	return atoms
 }

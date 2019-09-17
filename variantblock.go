@@ -13,6 +13,7 @@ type Variant struct {
 	WeightFactor float64
 }
 
+// Reduce returns a randomly selected Variant.
 func (vb *VariantBlock) Reduce() Variant {
 	r := rand.Intn(len(vb.Variants))
 

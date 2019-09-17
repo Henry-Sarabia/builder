@@ -9,6 +9,7 @@ type Property struct {
 	AttributeGroups     []*AttributeGroup
 }
 
+// Reduce returns a slice of randomly selected Attributes.
 func (p *Property) Reduce() []Attribute {
 	var attrs []Attribute
 	for _, a := range p.Attributes {

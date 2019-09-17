@@ -3,7 +3,9 @@ package builder
 import (
 	"encoding/json"
 	"github.com/pkg/errors"
+	"github.com/satori/go.uuid"
 	"io"
+	"log"
 	"math/rand"
 )
 
@@ -16,6 +18,53 @@ type Recipe struct {
 	Comps      []Component `json:"components"`
 }
 
+func (r *Recipe) Produce() Item {
+	comps := r.Reduce()
+
+	var atoms []AtomSlice
+	for _, c := range comps {
+		as := AtomSlice{
+			ComponentLabel: c.Name,
+			Atoms: c.Atomize(),
+		}
+		atoms = append(atoms, as)
+	}
+
+	val, wgt := r.BaseValue, r.BaseWeight
+	for _, atms := range atoms {
+		for _, a := range atms.Atoms {
+			val *= a.ValueFactor
+			wgt *= a.WeightFactor
+		}
+	}
+
+	id, err := uuid.NewV4()
+	if err != nil {
+		log.Fatal(err) // TODO: Handle this error better
+	}
+
+	return Item{
+		ID: id.String(),
+		Name: r.Name,
+		Value: val,
+		Weight: wgt,
+		Description: stringify(atoms),
+	}
+}
+
+func stringify(atoms []AtomSlice) string {
+	var s string
+	for _, atm := range atoms {
+		s += atm.ComponentLabel
+		for _, a := range atm.Atoms {
+			s += a.String
+		}
+	}
+
+	return s
+}
+
+// Reduce returns a slice of randomly selected Components.
 func (r *Recipe) Reduce() []Component {
 	var comps []Component
 	for _, c := range r.Comps {

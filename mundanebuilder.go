@@ -205,7 +205,3 @@ func (mb *MundaneBuilder) linkAffixes() error {
 
 	return nil
 }
-
-func (mb *MundaneBuilder) Item() (*Item, error) {
-
-}
