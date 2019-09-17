@@ -130,6 +130,10 @@ func (mb *MundaneBuilder) LinkResources() error {
 		return errors.Wrap(err, "cannot link recipes") //TODO: Elaborate
 	}
 
+	if err := mb.linkAffixes(); err != nil {
+		return errors.Wrap(err, "cannot link affixes") //TODO: Elaborate
+	}
+
 	return nil
 }
 
@@ -175,6 +179,30 @@ func (mb *MundaneBuilder) linkRecipes() error {
 			}
 		}
 	}
+	return nil
+}
+
+// linkAffixes links every Attribute's AffixNames to their respective Affixes.
+func (mb *MundaneBuilder) linkAffixes() error {
+	for _, attr := range mb.Attributes {
+		for _, name := range attr.PrefixNames {
+			pfx, ok := mb.Attributes[name]
+			if !ok {
+				return errors.Errorf("cannot find Attribute '%s' from Attribute '%s' in builder's loaded Attributes", name, attr.Name)
+			}
+
+			attr.Prefixes = append(attr.Prefixes, &pfx)
+		}
+		for _, name := range attr.SuffixNames {
+			sfx, ok := mb.Attributes[name]
+			if !ok {
+				return errors.Errorf("cannot find Attribute '%s' from Attribute '%s' in builder's loaded Attributes", name, attr.Name)
+			}
+
+			attr.Suffixes = append(attr.Suffixes, &sfx)
+		}
+	}
+
 	return nil
 }
 
