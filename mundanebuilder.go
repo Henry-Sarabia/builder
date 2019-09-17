@@ -19,6 +19,15 @@ type MundaneBuilder struct {
 	Groups     map[string]AttributeGroup
 }
 
+// NewMundaneBuilder returns an initialized MundaneBuilder.
+func NewMundaneBuilder() MundaneBuilder {
+	return MundaneBuilder{
+		Recipes: make(map[string]Recipe),
+		Attributes: make(map[string]Attribute),
+		Groups: make(map[string]AttributeGroup),
+	}
+}
+
 // SetRecipes reads the JSON-encoded Recipes from the provided Reader and
 // adds them to the receiver's Recipe map.
 func (mb *MundaneBuilder) SetRecipes(r io.Reader) error {
