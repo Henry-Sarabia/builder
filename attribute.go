@@ -37,8 +37,38 @@ func (a *Attribute) Reduce() Variant {
 		log.Fatal("Attribute.Reduce should never reach this") //TODO: Handle this case properly
 	}
 
+	if pfx, ok := a.RandomPrefix(); ok {
+		rd := pfx.Reduce()
+		v.Name = v.Name + rd.Name
+		v.ValueFactor = v.ValueFactor * rd.ValueFactor
+	}
+
+	if sfx, ok := a.RandomSuffix(); ok {
+		rd := sfx.Reduce()
+		v.Name = rd.Name + v.Name
+		v.ValueFactor = v.ValueFactor * rd.ValueFactor
+	}
+
 	v.WeightFactor = a.WeightFactor
 	return v
+}
+
+func (a *Attribute) RandomPrefix() (*Attribute, bool) {
+	if len(a.Prefixes) <= 0 {
+		return nil, false
+	}
+
+	i := rand.Intn(len(a.Prefixes))
+	return a.Prefixes[i], true
+}
+
+func (a *Attribute) RandomSuffix() (*Attribute, bool) {
+	if len(a.Suffixes) <= 0 {
+		return nil, false
+	}
+
+	i := rand.Intn(len(a.Suffixes))
+	return a.Suffixes[i], true
 }
 
 // readAttribute reads the JSON-encoded Attributes from the provided Reader.
