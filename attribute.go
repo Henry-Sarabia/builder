@@ -13,7 +13,7 @@ type Attribute struct {
 	Common       VariantBlock `json:"common"`
 	Uncommon     VariantBlock `json:"uncommon"`
 	Rare         VariantBlock `json:"rare"`
-	WeightFactor factor       `json:"weight_factor"`
+	WeightFactor float64      `json:"weight_factor"`
 	Prefixes     []string     `json:"prefix_references"`
 }
 

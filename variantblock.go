@@ -3,14 +3,14 @@ package builder
 import "math/rand"
 
 type VariantBlock struct {
-	ValueFactor factor   `json:"value_factor"`
+	ValueFactor float64  `json:"value_factor"`
 	Variants    []string `json:"variants"`
 }
 
 type Variant struct {
 	Name         string
-	ValueFactor  factor
-	WeightFactor factor
+	ValueFactor  float64
+	WeightFactor float64
 }
 
 func (vb *VariantBlock) Reduce() Variant {
