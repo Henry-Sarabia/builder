@@ -49,7 +49,6 @@ func (a *Attribute) Reduce() Variant {
 		v.ValueFactor = v.ValueFactor * rd.ValueFactor
 	}
 
-	v.WeightFactor = a.WeightFactor
 	return v
 }
 
@@ -77,6 +76,24 @@ func readAttribute(r io.Reader) ([]Attribute, error) {
 
 	if err := json.NewDecoder(r).Decode(&attr); err != nil {
 		return nil, errors.Wrap(err, "cannot decode Attribute from io.Reader")
+	}
+
+	for _, a := range attr {
+		if a.WeightFactor <= 0 {
+			a.WeightFactor = 1
+		}
+
+		if a.Common.ValueFactor <= 0 {
+			a.Common.ValueFactor = 1
+		}
+
+		if a.Uncommon.ValueFactor <= 0 {
+			a.Uncommon.ValueFactor = 1
+		}
+
+		if a.Rare.ValueFactor <= 0 {
+			a.Rare.ValueFactor = 1
+		}
 	}
 
 	return attr, nil
