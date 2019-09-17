@@ -4,6 +4,7 @@ import (
 	"github.com/Henry-Sarabia/blank"
 	"github.com/pkg/errors"
 	"io"
+	"math/rand"
 )
 
 var (
@@ -213,4 +214,28 @@ func (mb *MundaneBuilder) linkAffixes() error {
 	}
 
 	return nil
+}
+
+
+// Item generates a unique mundane Item using the set resources in MundaneBuilder.
+func (mb *MundaneBuilder) Item() (*Item, error) {
+	rec := mb.Reduce()
+	i := rec.Produce()
+	return &i, nil
+}
+
+// Reduce returns a randomly selected Recipe.
+func (mb *MundaneBuilder) Reduce() Recipe {
+	i := rand.Intn(len(mb.Recipes))
+
+	var r Recipe
+	for _, v := range mb.Recipes {
+		if i == 0 {
+			r = v
+			break
+		}
+		i--
+	}
+
+	return r
 }
