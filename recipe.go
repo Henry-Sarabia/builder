@@ -3,9 +3,8 @@ package builder
 import (
 	"encoding/json"
 	"github.com/pkg/errors"
-	"github.com/satori/go.uuid"
+	uuid "github.com/satori/go.uuid"
 	"io"
-	"log"
 	"math/rand"
 )
 
@@ -38,10 +37,7 @@ func (r *Recipe) Produce() Item {
 		}
 	}
 
-	id, err := uuid.NewV4()
-	if err != nil {
-		log.Fatal(err) // TODO: Handle this error better
-	}
+	id := uuid.NewV4()
 
 	return Item{
 		ID: id.String(),
