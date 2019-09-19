@@ -1,0 +1,67 @@
+[
+  {
+    "name": "negative adverb",
+    "common": {
+      "value_factor": 1,
+      "variants": [
+        "slightly",
+        "lightly",
+        "faintly",
+        "mildly"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 0.75,
+      "variants": [
+        "",
+        "noticeably",
+        "moderately",
+        "notably",
+        "somewhat",
+        "fairly"
+      ]
+    },
+    "rare": {
+      "value_factor": 0.5,
+      "variants": [
+        "heavily",
+        "severely",
+        "extremely",
+        "harshly",
+        "badly"
+      ]
+    }
+  },
+  {
+    "name": "positive adverb",
+    "common": {
+      "value_factor": 1,
+      "variants": [
+        "haphazardly",
+        "carelessly",
+        "sloppily"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.25,
+      "variants": [
+        "",
+        "properly",
+        "well",
+        "carefully",
+        "thoroughly",
+        "delicately"
+      ]
+    },
+    "rare": {
+      "value_factor": 1.5,
+      "variants": [
+        "flawlessly",
+        "extremely well",
+        "exceedingly well",
+        "exquisitely",
+        "meticulously"
+      ]
+    }
+  }
+]
