@@ -39,7 +39,7 @@ func (c *Component) Atomize() []Atom {
 			v := a.Reduce()
 			atom := Atom{
 				PropertyLabel: p.Name,
-				WeightFactor: a.WeightFactor,
+				WeightFactor: v.WeightFactor,
 				ValueFactor: v.ValueFactor,
 				String: v.Name,
 			}
