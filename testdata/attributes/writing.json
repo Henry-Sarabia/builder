@@ -1,0 +1,83 @@
+[
+  {
+    "name": "letter",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "X",
+        "Y",
+        "Z"
+      ]
+    }
+  },
+  {
+    "name": "power word",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "minor power word 1",
+        "minor power word 2",
+        "minor power word 3"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "avg power word 1",
+        "avg power word 2",
+        "avg power word 3"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "major power word 1",
+        "major power word 2",
+        "major power word 3"
+      ]
+    }
+  },
+  {
+    "name": "symbol",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "minor symbol word 1",
+        "minor symbol word 2",
+        "minor symbol word 3"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "avg symbol word 1",
+        "avg symbol word 2",
+        "avg symbol word 3"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "major symbol word 1",
+        "major symbol word 2",
+        "major symbol word 3"
+      ]
+    }
+  }
+]

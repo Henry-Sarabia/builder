@@ -1,0 +1,88 @@
+[
+  {
+    "name": "humanoid",
+    "common": {
+      "value_factor": 1.2,
+      "variants": [
+        "dragonborn",
+        "dwarf",
+        "elf",
+        "gnome",
+        "goblin",
+        "halfling",
+        "half-orc",
+        "hobgoblin",
+        "human",
+        "kenku",
+        "kobold",
+        "orc",
+        "tabaxi",
+        "tiefling",
+        "yuan-ti"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.4,
+      "variants": [
+        "aarakocra",
+        "firbolg",
+        "goliath",
+        "lizardfolk",
+        "minotaur",
+        "tortle",
+        "triton",
+        "warforged"
+      ]
+    },
+    "rare": {
+      "value_factor": 1.6,
+      "variants": [
+        "deva"
+      ]
+    }
+  },
+  {
+    "name": "monstrosity",
+    "common": {
+      "value_factor": 1.25,
+      "variants": [
+        "death dog",
+        "cockatrice",
+        "harpy",
+        "owlbear",
+        "roc",
+        "worg"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.5,
+      "variants": [
+        "bulette",
+        "centaur",
+        "chimera",
+        "drider",
+        "ettercap",
+        "hippogriff",
+        "hydra",
+        "manticore",
+        "merrow",
+        "minotaur",
+        "naga",
+        "phase spider",
+        "rust monster"
+      ]
+    },
+    "rare": {
+      "value_factor": 1.75,
+      "variants": [
+        "androsphinx",
+        "basilisk",
+        "gorgon",
+        "griffon",
+        "gynosphinx",
+        "kraken",
+        "medusa"
+      ]
+    }
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "geometric",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "square"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "rectangle"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "circle",
+        "triangle"
+      ]
+    }
+  },
+  {
+    "name": "geometric3",
+    "common": {
+      "value_factor": 1.5,
+      "variants": [
+        "cube"
+      ]
+    },
+    "uncommon": {
+      "value_factor": 1.75,
+      "variants": [
+        "rectangular prism"
+      ]
+    },
+    "rare": {
+      "value_factor": 2,
+      "variants": [
+        "sphere",
+        "pyramid"
+      ]
+    }
+  }
+]
