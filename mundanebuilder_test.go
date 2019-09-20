@@ -10,6 +10,8 @@ import (
 
 const (
 	wildcard = "/*.json"
+	testRecipeName = "figurine"
+	testGroupName = "creature"
 	testFileRecipe = "testdata/recipes/art.json"
 	testFileGroup = "testdata/groups/base.json"
 	testDirRecipe = "testdata/recipes"
@@ -116,6 +118,33 @@ func TestMundaneBuilder_Item(t *testing.T) {
 	spew.Dump(i)
 }
 
+func TestMundaneBuilder_LinkGroups(t *testing.T) {
+	b, err := setupMundaneBuilder()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := b.linkGroups(); err != nil {
+		t.Error(err)
+	}
+
+	grp := b.Groups[testGroupName]
+	if len(grp.Attributes) != len(grp.AttributeNames) {
+		t.Errorf("got: <%v>, want: <%v>", grp.Attributes, grp.AttributeNames)
+	}
+
+	names := make(map[string]bool)
+	for _, n := range grp.AttributeNames {
+		names[n] = true
+	}
+
+	for _, a := range grp.Attributes {
+		if _, ok := names[a.Name]; !ok {
+			t.Errorf("got: <%v>, want: <%v>", grp.Attributes, grp.AttributeNames)
+		}
+	}
+}
+
 func TestMundaneBuilder_LinkRecipes(t *testing.T) {
 	b, err := setupMundaneBuilder()
 	if err != nil {
@@ -126,12 +155,13 @@ func TestMundaneBuilder_LinkRecipes(t *testing.T) {
 		t.Error(err)
 	}
 
-	r := b.Recipes["figurine"]
+	r := b.Recipes[testRecipeName]
 	for _, c := range r.Comps {
 		for _, prop := range c.Properties {
 			if len(prop.Attributes) != len(prop.AttributeNames) {
 				t.Errorf("got: <%v>, want: <%v>", prop.Attributes, prop.AttributeNames)
 			}
+			//TODO: Add individual name checking
 
 			if len(prop.AttributeGroups) != len(prop.AttributeGroupNames) {
 				t.Errorf("got: <%v>, want: <%v>", prop.AttributeGroups, prop.AttributeGroupNames)
