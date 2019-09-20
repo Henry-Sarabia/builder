@@ -17,6 +17,44 @@ const (
 	testDirAttributeGroup = "testdata/groups"
 )
 
+func setupMundaneBuilder() (*MundaneBuilder, error) {
+	b := NewMundaneBuilder()
+
+	rec, err := os.Open(testFileRecipe)
+	if err != nil {
+		return nil, err
+	}
+	if err := b.SetRecipes(rec); err != nil {
+		return nil, err
+	}
+
+	grp, err := os.Open(testFileGroup)
+	if err != nil {
+		return nil, err
+	}
+	if err := b.SetAttributeGroups(grp); err != nil {
+		return nil, err
+	}
+
+	attr, err := filepath.Glob(testDirAttribute + wildcard)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, a := range attr {
+		f, err := os.Open(a)
+		if err != nil {
+			return nil, err
+		}
+
+		if err := b.SetAttributes(f); err != nil {
+			return nil, err
+		}
+	}
+
+	return &b, nil
+}
+
 func TestMundaneBuilder_Item(t *testing.T) {
 	rand.Seed(1)
 
@@ -79,39 +117,9 @@ func TestMundaneBuilder_Item(t *testing.T) {
 }
 
 func TestMundaneBuilder_LinkRecipes(t *testing.T) {
-	rand.Seed(1)
-	b := NewMundaneBuilder()
-
-	rec, err := os.Open(testFileRecipe)
+	b, err := setupMundaneBuilder()
 	if err != nil {
 		t.Fatal(err)
-	}
-	if err := b.SetRecipes(rec); err != nil {
-		t.Fatal(err)
-	}
-
-	grp, err := os.Open(testFileGroup)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if err := b.SetAttributeGroups(grp); err != nil {
-		t.Fatal(err)
-	}
-
-	attr, err := filepath.Glob(testDirAttribute + wildcard)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	for _, a := range attr {
-		f, err := os.Open(a)
-		if err != nil {
-			t.Fatal(err)
-		}
-
-		if err := b.SetAttributes(f); err != nil {
-			t.Fatal(err)
-		}
 	}
 
 	if err := b.linkRecipes(); err != nil {
