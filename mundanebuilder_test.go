@@ -133,7 +133,7 @@ func TestMundaneBuilder_LinkGroups(t *testing.T) {
 		t.Errorf("got: <%v>, want: <%v>", grp.Attributes, grp.AttributeNames)
 	}
 
-	names := make(map[string]bool)
+	names := make(map[string]bool, len(grp.AttributeNames))
 	for _, n := range grp.AttributeNames {
 		names[n] = true
 	}
@@ -161,10 +161,30 @@ func TestMundaneBuilder_LinkRecipes(t *testing.T) {
 			if len(prop.Attributes) != len(prop.AttributeNames) {
 				t.Errorf("got: <%v>, want: <%v>", prop.Attributes, prop.AttributeNames)
 			}
-			//TODO: Add individual name checking
+			names := make(map[string]bool, len(prop.AttributeNames))
+			for _, n := range prop.AttributeNames {
+				names[n] = true
+			}
+
+			for _, a := range prop.Attributes {
+				if _, ok := names[a.Name]; !ok {
+					t.Errorf("got: <%v>, want: <%v>", prop.Attributes, prop.AttributeNames)
+				}
+			}
 
 			if len(prop.AttributeGroups) != len(prop.AttributeGroupNames) {
 				t.Errorf("got: <%v>, want: <%v>", prop.AttributeGroups, prop.AttributeGroupNames)
+			}
+
+			names = make(map[string]bool, len(prop.AttributeGroupNames))
+			for _, n := range prop.AttributeGroupNames {
+				names[n] = true
+			}
+
+			for _, g := range prop.AttributeGroups {
+				if _, ok := names[g.Name]; !ok {
+					t.Errorf("got: <%v>, want: <%v>", prop.AttributeGroups, prop.AttributeGroupNames)
+				}
 			}
 		}
 	}
