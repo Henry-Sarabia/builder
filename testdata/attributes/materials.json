@@ -5,40 +5,29 @@
     "common": {
       "value_factor": 1,
       "variants": [
-        "corkwood"
+        "ash wood",
+        "elm wood",
+        "oak wood",
+        "pine wood"
       ]
     },
     "uncommon": {
       "value_factor": 1.5,
       "variants": [
-        "ash wood",
         "bamboo wood",
-        "birch wood",
-        "cedar wood",
-        "cherry wood",
-        "elm wood",
-        "fir wood",
-        "maple wood",
-        "oak wood",
-        "pine wood",
-        "spruce wood",
-        "walnut wood"
+        "firwood"
       ]
     },
     "rare": {
       "value_factor": 2,
       "variants": [
-        "eucalyptus wood",
         "rosewood",
-        "mahogany wood",
         "ironwood",
         "sandalwood"
       ]
     },
     "prefix_names": [
-      "wear",
       "organic",
-      "clean",
       "varnish"
     ]
   },
@@ -48,7 +37,6 @@
       "value_factor": 6,
       "variants": [
         "black iron",
-        "pig iron",
         "cast iron",
         "lead"
       ]
@@ -70,7 +58,6 @@
     },
     "weight_factor": 10,
     "prefix_names": [
-      "wear",
       "metal",
       "polish"
     ]
@@ -101,7 +88,6 @@
     },
     "weight_factor": 8,
     "prefix_names": [
-      "wear",
       "metal",
       "polish"
     ]
@@ -119,8 +105,6 @@
     "uncommon": {
       "value_factor": 3,
       "variants": [
-        "granite",
-        "alabaster",
         "sandstone",
         "limestone",
         "soapstone"
@@ -130,52 +114,14 @@
       "value_factor": 4,
       "variants": [
         "marble",
-        "quartz",
-        "quartzite",
-        "serpentinite",
         "obsidian",
         "onyx"
       ]
     },
     "weight_factor": 9,
     "prefix_names": [
-      "wear",
       "composite",
       "polish"
-    ]
-  },
-  {
-    "name": "cloth",
-    "common": {
-      "value_factor": 1.5,
-      "variants": [
-        "hempen cloth"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 2,
-      "variants": [
-        "cotton",
-        "linen",
-        "wool",
-        "felt cloth",
-        "flannel cloth"
-      ]
-    },
-    "rare": {
-      "value_factor": 3,
-      "variants": [
-        "cashmere",
-        "ramie cloth",
-        "silk"
-      ]
-    },
-    "weight_factor": 1,
-    "prefix_names": [
-      "wear",
-      "textile",
-      "organic",
-      "clean"
     ]
   },
   {
@@ -183,188 +129,31 @@
     "common": {
       "value_factor": 14,
       "variants": [
-        "amber",
         "bloodstone",
-        "jet",
         "moonstone",
-        "obsidian",
-        "onyx",
-        "sunstone",
-        "zircon"
+        "sunstone"
       ]
     },
     "uncommon": {
       "value_factor": 15,
       "variants": [
-        "agate",
-        "alexandrite",
-        "amazonite",
-        "azurite",
-        "citrine",
-        "garnet",
         "jade",
-        "lapis lazuli",
-        "malachite",
-        "opalite",
         "pearl",
-        "peridot",
-        "quartz",
-        "rose quartz",
-        "serpentine",
-        "tiger eye",
-        "topaz",
-        "tourmaline",
-        "turquoise"
+        "topaz"
       ]
     },
     "rare": {
       "value_factor": 16,
       "variants": [
-        "amethyst",
-        "aquamarine",
         "diamond",
-        "emerald",
         "ruby",
         "sapphire"
       ]
     },
     "weight_factor": 5,
     "prefix_names": [
-      "wear",
       "ceramic",
       "composite",
-      "polish"
-    ]
-  },
-  {
-    "name": "leather",
-    "common": {
-      "value_factor": 2,
-      "variants": [
-        "calf leather"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 3,
-      "variants": [
-        "deer leather",
-        "buffalo leather"
-      ]
-    },
-    "rare": {
-      "value_factor": 4,
-      "variants": [
-        "alligator leather",
-        "crocodile leather",
-        "stingray leather",
-        "shark leather"
-      ]
-    },
-    "weight_factor": 2,
-    "prefix_names": [
-      "wear",
-      "organic",
-      "textile",
-      "clean",
-      "condition"
-    ]
-  },
-  {
-    "name": "animal skin",
-    "common": {
-      "value_factor": 2,
-      "variants": [
-        "pig skin",
-        "calfskin"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 3,
-      "variants": [
-        "deerskin",
-        "lamb skin"
-      ]
-    },
-    "rare": {
-      "value_factor": 4,
-      "variants": [
-        "snake skin",
-        "elk skin",
-        "buckskin"
-      ]
-    },
-    "weight_factor": 2,
-    "prefix_names": [
-      "wear",
-      "organic",
-      "textile",
-      "clean",
-      "condition"
-    ]
-  },
-  {
-    "name": "ivory",
-    "common": {
-      "value_factor": 8,
-      "variants": [
-        "boar ivory"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 9,
-      "variants": [
-        "elephant ivory",
-        "walrus ivory",
-        "hippopotamus ivory",
-        "orc ivory"
-      ]
-    },
-    "rare": {
-      "value_factor": 10,
-      "variants": [
-        "narwhal ivory",
-        "mammoth ivory"
-      ]
-    },
-    "weight_factor": 3,
-    "prefix_names": [
-      "wear",
-      "organic",
-      "composite",
-      "ceramic",
-      "clean",
-      "polish"
-    ]
-  },
-  {
-    "name": "bone",
-    "common": {
-      "value_factor": 3,
-      "variants": [
-        "bone",
-        "animal bone",
-        "unknown bone"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 4,
-      "variants": [
-        "humanoid bone"
-      ]
-    },
-    "rare": {
-      "value_factor": 5,
-      "variants": [
-        "fang"
-      ]
-    },
-    "weight_factor": 2,
-    "prefix_names": [
-      "wear",
-      "organic",
-      "composite",
-      "ceramic",
-      "clean",
       "polish"
     ]
   }
