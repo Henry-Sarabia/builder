@@ -4,6 +4,7 @@ import (
 	"github.com/Henry-Sarabia/blank"
 	"github.com/pkg/errors"
 	"io"
+	"log"
 	"math/rand"
 )
 
@@ -15,7 +16,7 @@ var (
 // MundaneBuilder implements the Builder interface. MundaneBuilder randomly
 // generates mundane Items from the provided resources.
 type MundaneBuilder struct {
-	Recipes    map[string]Recipe
+	Recipes    map[string]*Recipe
 	Attributes map[string]Attribute
 	Groups     map[string]AttributeGroup
 }
@@ -23,7 +24,7 @@ type MundaneBuilder struct {
 // NewMundaneBuilder returns an initialized MundaneBuilder.
 func NewMundaneBuilder() MundaneBuilder {
 	return MundaneBuilder{
-		Recipes: make(map[string]Recipe),
+		Recipes: make(map[string]*Recipe),
 		Attributes: make(map[string]Attribute),
 		Groups: make(map[string]AttributeGroup),
 	}
@@ -56,7 +57,7 @@ func (mb *MundaneBuilder) setRecipes(rec []Recipe) error {
 			return ErrNameBlank
 		}
 
-		mb.Recipes[v.Name] = v
+		mb.Recipes[v.Name] = &v
 	}
 
 	return nil
@@ -166,25 +167,34 @@ func (mb *MundaneBuilder) linkGroups() error {
 // linkRecipes links every Recipe's AttributeNames and AttributeGroupNames to
 // to their respective Attributes and AttributeGroups.
 func (mb *MundaneBuilder) linkRecipes() error {
-	for _, rec := range mb.Recipes {
-		for _, comp := range rec.Comps {
-			for _, prop := range comp.Properties {
-				for _, name := range prop.AttributeNames {
+	log.Println("Linking Recipes")
+	log.Println("Iterating mb.Recipes")
+	for k := range mb.Recipes {
+		log.Println("Iterating rec.Components")
+		for i := range mb.Recipes[k].Comps {
+			log.Println("Iterating comp.Properties")
+			for j := range mb.Recipes[k].Comps[i].Properties {
+				log.Println("Iterating prop.AttributeNames")
+				log.Println("\tCurrent Property: ", mb.Recipes[k].Comps[i].Properties[j].Name)
+				for _, name := range mb.Recipes[k].Comps[i].Properties[j].AttributeNames {
 					attr, ok := mb.Attributes[name]
 					if !ok {
-						return errors.Errorf("cannot find Attribute '%s' from Recipe '%s' in builder's loaded Attributes", name, rec.Name)
+						return errors.Errorf("cannot find Attribute '%s' from Recipe '%s' in builder's loaded Attributes", name, mb.Recipes[k].Name)
 					}
-
-					prop.Attributes = append(prop.Attributes, &attr)
+					log.Println("\t\tCurrent Attribute Name: ", name)
+					log.Println("\t\tCurrent Attribute: ", attr.Name)
+					log.Println("\t\tprop.Attributes Pre-Length: ", len(mb.Recipes[k].Comps[i].Properties[j].Attributes))
+					mb.Recipes[k].Comps[i].Properties[j].Attributes = append(mb.Recipes[k].Comps[i].Properties[j].Attributes, &attr)
+					log.Println("\t\tprop.Attributes Post-Length: ", len(mb.Recipes[k].Comps[i].Properties[j].Attributes))
 				}
 
-				for _, name := range prop.AttributeGroupNames {
+				for _, name := range mb.Recipes[k].Comps[i].Properties[j].AttributeGroupNames {
 					grp, ok := mb.Groups[name]
 					if !ok {
-						return errors.Errorf("cannot find AttributeGroup '%s' from Recipe '%s' in builder's loaded AttributeGroups", name, rec.Name)
+						return errors.Errorf("cannot find AttributeGroup '%s' from Recipe '%s' in builder's loaded AttributeGroups", name, mb.Recipes[k].Name)
 					}
 
-					prop.AttributeGroups = append(prop.AttributeGroups, &grp)
+					mb.Recipes[k].Comps[i].Properties[j].AttributeGroups = append(mb.Recipes[k].Comps[i].Properties[j].AttributeGroups, &grp)
 				}
 			}
 		}
@@ -231,7 +241,7 @@ func (mb *MundaneBuilder) Reduce() Recipe {
 	var r Recipe
 	for _, v := range mb.Recipes {
 		if i == 0 {
-			r = v
+			r = *v
 			break
 		}
 		i--

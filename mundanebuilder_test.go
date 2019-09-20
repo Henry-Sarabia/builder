@@ -10,9 +10,11 @@ import (
 
 const (
 	wildcard = "/*.json"
+	testFileRecipe = "testdata/recipes/art.json"
+	testFileGroup = "testdata/groups/base.json"
 	testDirRecipe = "testdata/recipes"
-	testDirAttribute = "testdata/properties/types"
-	testDirAttributeGroup = "testdata/properties/groups"
+	testDirAttribute = "testdata/attributes"
+	testDirAttributeGroup = "testdata/groups"
 )
 
 func TestMundaneBuilder_Item(t *testing.T) {
@@ -74,4 +76,58 @@ func TestMundaneBuilder_Item(t *testing.T) {
 	}
 
 	spew.Dump(i)
+}
+
+func TestMundaneBuilder_LinkRecipes(t *testing.T) {
+	rand.Seed(1)
+	b := NewMundaneBuilder()
+
+	rec, err := os.Open(testFileRecipe)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := b.SetRecipes(rec); err != nil {
+		t.Fatal(err)
+	}
+
+	grp, err := os.Open(testFileGroup)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := b.SetAttributeGroups(grp); err != nil {
+		t.Fatal(err)
+	}
+
+	attr, err := filepath.Glob(testDirAttribute + wildcard)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, a := range attr {
+		f, err := os.Open(a)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		if err := b.SetAttributes(f); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	if err := b.linkRecipes(); err != nil {
+		t.Error(err)
+	}
+
+	r := b.Recipes["figurine"]
+	for _, c := range r.Comps {
+		for _, prop := range c.Properties {
+			if len(prop.Attributes) != len(prop.AttributeNames) {
+				t.Errorf("got: <%v>, want: <%v>", prop.Attributes, prop.AttributeNames)
+			}
+
+			if len(prop.AttributeGroups) != len(prop.AttributeGroupNames) {
+				t.Errorf("got: <%v>, want: <%v>", prop.AttributeGroups, prop.AttributeGroupNames)
+			}
+		}
+	}
 }
