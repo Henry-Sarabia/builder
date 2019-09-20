@@ -1,33 +1,5 @@
 [
   {
-    "name": "wear",
-    "common": {
-      "value_factor": 0.9,
-      "variants": [
-        "blemished",
-        "used"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 0.75,
-      "variants": [
-        "worn",
-        "flawed",
-        "tarnished"
-      ]
-    },
-    "rare": {
-      "value_factor": 0.5,
-      "variants": [
-        "damaged",
-        "disfigured"
-      ]
-    },
-    "prefix_names":[
-      "negative adverb"
-    ]
-  },
-  {
     "name": "organic",
     "common": {
       "value_factor": 0.9,
@@ -51,33 +23,6 @@
         "burnt",
         "rotting",
         "decaying"
-      ]
-    },
-    "prefix_names":[
-      "negative adverb"
-    ]
-  },
-  {
-    "name": "textile",
-    "common": {
-      "value_factor": 0.9,
-      "variants": [
-        "ripped",
-        "torn"
-      ]
-    },
-    "uncommon": {
-      "value_factor": 0.75,
-      "variants": [
-        "stained",
-        "dirty",
-        "discolored"
-      ]
-    },
-    "rare": {
-      "value_factor": 0.5,
-      "variants": [
-        "soiled"
       ]
     },
     "prefix_names":[
@@ -167,26 +112,6 @@
     ]
   },
   {
-    "name": "clean",
-    "uncommon": {
-      "value_factor": 1.25,
-      "variants": [
-        "clean",
-        "unsullied",
-        "unblemished"
-      ]
-    },
-    "rare": {
-      "value_factor": 1.5,
-      "variants": [
-        "immaculate",
-        "spotless",
-        "gleaming",
-        "glistening"
-      ]
-    }
-  },
-  {
     "name": "polish",
     "uncommon": {
       "value_factor": 1.5,
@@ -229,22 +154,6 @@
         "enameled",
         "gilded",
         "embellished"
-      ]
-    },
-    "prefix_names":[
-      "positive adverb"
-    ]
-  },
-  {
-    "name": "condition",
-    "uncommon": {
-      "value_factor": 1.5,
-      "variants": [
-        "oiled",
-        "conditioned",
-        "waxed",
-        "polished",
-        "waterproofed"
       ]
     },
     "prefix_names":[

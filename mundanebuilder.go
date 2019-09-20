@@ -168,7 +168,8 @@ func (mb *MundaneBuilder) linkGroups() error {
 func (mb *MundaneBuilder) linkRecipes() error {
 	for _, rec := range mb.Recipes {
 		for _, comp := range rec.Comps {
-			for _, prop := range comp.Properties {
+			for i := range comp.Properties {
+				prop := &comp.Properties[i]
 				for _, name := range prop.AttributeNames {
 					attr, ok := mb.Attributes[name]
 					if !ok {
