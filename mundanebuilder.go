@@ -17,7 +17,7 @@ var (
 type MundaneBuilder struct {
 	Recipes    map[string]Recipe
 	Attributes map[string]Attribute
-	Groups     map[string]AttributeGroup
+	Groups     map[string]*AttributeGroup
 }
 
 // NewMundaneBuilder returns an initialized MundaneBuilder.
@@ -25,7 +25,7 @@ func NewMundaneBuilder() MundaneBuilder {
 	return MundaneBuilder{
 		Recipes: make(map[string]Recipe),
 		Attributes: make(map[string]Attribute),
-		Groups: make(map[string]AttributeGroup),
+		Groups: make(map[string]*AttributeGroup),
 	}
 }
 
@@ -121,7 +121,7 @@ func (mb *MundaneBuilder) setAttributeGroups(grp []AttributeGroup) error {
 			return ErrNameBlank
 		}
 
-		mb.Groups[v.Name] = v
+		mb.Groups[v.Name] = &v
 	}
 
 	return nil
@@ -185,7 +185,7 @@ func (mb *MundaneBuilder) linkRecipes() error {
 						return errors.Errorf("cannot find AttributeGroup '%s' from Recipe '%s' in builder's loaded AttributeGroups", name, rec.Name)
 					}
 
-					prop.AttributeGroups = append(prop.AttributeGroups, &grp)
+					prop.AttributeGroups = append(prop.AttributeGroups, grp)
 				}
 			}
 		}

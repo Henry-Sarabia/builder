@@ -1,12 +1,5 @@
 [
   {
-    "name": "language",
-    "attribute_names": [
-      "orcish",
-      "elvish"
-    ]
-  },
-  {
     "name": "creature",
     "attribute_names": [
       "humanoid",
