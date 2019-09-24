@@ -11,6 +11,8 @@ import (
 const (
 	wildcard = "/*.json"
 	testRecipeName = "figurine"
+	testRecipeValue = 10
+	testRecipeWeight = 1
 	testGroupName = "creature"
 	testFileRecipe = "testdata/recipes/art.json"
 	testFileGroup = "testdata/groups/base.json"
@@ -55,6 +57,38 @@ func setupMundaneBuilder() (*MundaneBuilder, error) {
 	}
 
 	return &b, nil
+}
+
+func TestMundaneBuilder_SetRecipes(t *testing.T) {
+	rand.Seed(1)
+
+	b := NewMundaneBuilder()
+
+	rec, err := os.Open(testFileRecipe)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := b.SetRecipes(rec); err != nil {
+		t.Fatal(err)
+	}
+
+	r, ok := b.Recipes[testRecipeName]
+	if !ok {
+		t.Errorf("got: <%v>, want: <%v>", nil, testRecipeName)
+	}
+
+	if r.Name != testRecipeName {
+		t.Errorf("got: <%v>, want: <%v>", r.Name, testRecipeName)
+	}
+
+	if r.BaseValue != testRecipeValue {
+		t.Errorf("got: <%v>, want: <%v>", r.BaseValue, testRecipeValue)
+	}
+
+	if r.BaseWeight != testRecipeWeight {
+		t.Errorf("got: <%v>, want: <%v>", r.BaseWeight, testRecipeWeight)
+	}
 }
 
 func TestMundaneBuilder_Item(t *testing.T) {
