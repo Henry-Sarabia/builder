@@ -13,9 +13,16 @@ const (
 	testRecipeName = "figurine"
 	testRecipeValue = 10
 	testRecipeWeight = 1
+
+	testAttributeName = "wood"
+	testAttributeWeight = 3
+	testAttributePfxLength = 2
+
 	testGroupName = "creature"
+
 	testFileRecipe = "testdata/recipes/art.json"
 	testFileGroup = "testdata/groups/base.json"
+
 	testDirRecipe = "testdata/recipes"
 	testDirAttribute = "testdata/attributes"
 	testDirAttributeGroup = "testdata/groups"
@@ -60,16 +67,14 @@ func setupMundaneBuilder() (*MundaneBuilder, error) {
 }
 
 func TestMundaneBuilder_SetRecipes(t *testing.T) {
-	rand.Seed(1)
-
 	b := NewMundaneBuilder()
 
-	rec, err := os.Open(testFileRecipe)
+	f, err := os.Open(testFileRecipe)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if err := b.SetRecipes(rec); err != nil {
+	if err := b.SetRecipes(f); err != nil {
 		t.Fatal(err)
 	}
 
@@ -89,6 +94,44 @@ func TestMundaneBuilder_SetRecipes(t *testing.T) {
 	if r.BaseWeight != testRecipeWeight {
 		t.Errorf("got: <%v>, want: <%v>", r.BaseWeight, testRecipeWeight)
 	}
+}
+
+func TestMundaneBuilder_SetAttributes(t *testing.T) {
+	b := NewMundaneBuilder()
+
+	dir, err := filepath.Glob(testDirAttribute + wildcard)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, d := range dir {
+		f, err := os.Open(d)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		if err := b.SetAttributes(f); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	a, ok := b.Attributes[testAttributeName]
+	if !ok {
+		t.Fatalf("cannot find test Attribute <%s>", testAttributeName)
+	}
+
+	if a.Name != testAttributeName {
+		t.Errorf("got: <%v>, want: <%v>", a.Name, testAttributeName)
+	}
+
+	if a.WeightFactor != testAttributeWeight {
+		t.Errorf("got: <%v>, want: <%v>", a.WeightFactor, testAttributeWeight)
+	}
+
+	if len(a.PrefixNames) != testAttributePfxLength {
+		t.Errorf("got: <%v>, want: <%v>", len(a.PrefixNames), testAttributePfxLength)
+	}
+
 }
 
 func TestMundaneBuilder_Item(t *testing.T) {
