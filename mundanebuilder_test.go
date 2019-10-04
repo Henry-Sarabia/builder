@@ -19,6 +19,7 @@ const (
 	testAttributePfxLength = 2
 
 	testGroupName = "creature"
+	testGroupAttrNameLength = 2
 
 	testFileRecipe = "testdata/recipes/art.json"
 	testFileGroup = "testdata/groups/base.json"
@@ -130,6 +131,32 @@ func TestMundaneBuilder_SetAttributes(t *testing.T) {
 
 	if len(a.PrefixNames) != testAttributePfxLength {
 		t.Errorf("got: <%v>, want: <%v>", len(a.PrefixNames), testAttributePfxLength)
+	}
+
+}
+
+func TestMundaneBuilder_SetAttributeGroups(t *testing.T) {
+	b := NewMundaneBuilder()
+
+	f, err := os.Open(testFileGroup)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := b.SetAttributeGroups(f); err != nil {
+		t.Fatal(err)
+	}
+
+	grp, ok := b.Groups[testGroupName]
+	if !ok {
+		t.Fatalf("cannot find test Attribute <%s>", testGroupName)
+	}
+
+	if grp.Name != testGroupName {
+		t.Errorf("got: <%v>, want: <%v>", grp.Name, testGroupName)
+	}
+
+	if len(grp.AttributeNames) != testGroupAttrNameLength {
+		t.Errorf("got: <%v>, want: <%v>", len(grp.Attributes), testGroupAttrNameLength)
 	}
 
 }
